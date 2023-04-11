@@ -11,9 +11,9 @@ export class CdkAppStack extends Stack {
     super(scope, id, props);
 
     const calculateFunction = new Function(this, 'CalculateFunction', {
-      code: Code.fromAsset(join(this.lambdasDir, 'calculate.py')),
+      code: Code.fromAsset(join(this.lambdasDir, 'functions_package.zip')),
       runtime: Runtime.PYTHON_3_9,
-      handler: "index.handler"
+      handler: "calculate.handler"
     });
 
     const stateMachine = new StateMachine(this, 'CalculationMachine', {
