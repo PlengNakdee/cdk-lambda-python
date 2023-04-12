@@ -15,11 +15,5 @@ export class CdkAppStack extends Stack {
       runtime: Runtime.PYTHON_3_9,
       handler: "calculate.handler"
     });
-
-    const stateMachine = new StateMachine(this, 'CalculationMachine', {
-      definition: new LambdaInvoke(this, "calculationTask", {
-        lambdaFunction: calculateFunction
-      }).next(new Succeed(this, "Success"))
-    });
   }
 }
